@@ -227,6 +227,8 @@ while getopts ":hc:df:p:R:r:v:" opt; do
 done
 shift $(( OPTIND - 1 ))
 
+[[ ! -f /vpn/auth.txt ]] && echo $VPNUSER > /vpn/auth.txt && echo $VPNPASS >> /vpn/auth.txt && chmod 700 /vpn/auth.txt && echo "kdfksj"
+
 [[ "${CERT_AUTH:-""}" ]] && cert_auth "$CERT_AUTH"
 [[ "${FIREWALL:-""}" || -e $route ]] && firewall "${FIREWALL:-""}"
 [[ "${ROUTE6:-""}" ]] && return_route6 "$ROUTE6"
